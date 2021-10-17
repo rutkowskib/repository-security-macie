@@ -3,7 +3,7 @@ name: Upload Repository
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
