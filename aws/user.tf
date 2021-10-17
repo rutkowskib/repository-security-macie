@@ -17,7 +17,7 @@ resource "aws_iam_user_policy" "user_policy" {
                 "s3:List*",
                 "s3:PutObject*"
             ],
-            "Resource": "${aws_s3_bucket.code_bucket.arn}"
+            "Resource": "${aws_s3_bucket.code_bucket.arn}/*"
         }
     ]
 }
