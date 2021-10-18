@@ -19,3 +19,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: eu-west-1
           DEST_DIR: ${{ env.GITHUB_SHA }}
+      - uses: isbang/sqs-action@v0.1.1
+        with:
+          sqs-url: ${{ secrets.SQS_URL }}
+          message: ${{ env.GITHUB_SHA }}

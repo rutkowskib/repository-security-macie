@@ -10,3 +10,7 @@ output "user_secret_access_key" {
   value = aws_iam_access_key.user_key.secret
   sensitive = true
 }
+
+output "queue_endpoint" {
+  value = aws_sqs_queue.trigger_queue.id
+}

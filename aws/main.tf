@@ -3,8 +3,6 @@ resource "aws_s3_bucket" "code_bucket" {
   acl    = "private"
 }
 
-data "aws_iam_account_alias" "account" {}
-
 resource "aws_macie2_account" "macie_account" {
   finding_publishing_frequency = "FIFTEEN_MINUTES"
 }
