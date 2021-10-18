@@ -26,4 +26,4 @@ jobs:
       - uses: isbang/sqs-action@v0.1.1
         with:
           sqs-url: ${{ secrets.SQS_URL }}
-          message: ''
+          message: 'trigger'
