@@ -103,4 +103,4 @@ override.tf.json
 
 /**/.terraform.lock.hcl
 /**/*.tfvars
-./aws/lambda.zip
+aws/lambda.zip
