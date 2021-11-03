@@ -37,7 +37,7 @@ data "aws_iam_policy_document" "sns_topic_policy" {
   }
 }
 
-resource "aws_sns_topic_subscription" "user_updates_sqs_target" {
+resource "aws_sns_topic_subscription" "email_topic_subscription" {
   topic_arn = aws_sns_topic.macie_topic.arn
   protocol  = "email"
   endpoint  = var.email

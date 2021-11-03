@@ -74,10 +74,6 @@ resource "aws_lambda_function" "trigger_macie" {
   depends_on = [ data.archive_file.lambda_zip ]
 }
 
-resource "aws_sqs_queue" "trigger_queue" {
-  name_prefix = "macie_trigger_queue"
-}
-
 resource "aws_lambda_event_source_mapping" "sqs_trigger" {
   event_source_arn = aws_sqs_queue.trigger_queue.arn
   function_name    = aws_lambda_function.trigger_macie.arn

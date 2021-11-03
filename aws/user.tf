@@ -14,19 +14,19 @@ resource "aws_iam_user_policy" "user_policy" {
             "Effect": "Allow",
             "Action": [
                 "s3:Get*",
-                "s3:List*",
-                "s3:PutObject*",
-                "s3:DeleteObject*"
+                "s3:List*"
             ],
-            "Resource": "${aws_s3_bucket.code_bucket.arn}/*"
+            "Resource": "${aws_s3_bucket.code_bucket.arn}"
         },
         {
             "Effect": "Allow",
             "Action": [
                 "s3:Get*",
-                "s3:List*"
+                "s3:List*",
+                "s3:PutObject*",
+                "s3:DeleteObject*"
             ],
-            "Resource": "${aws_s3_bucket.code_bucket.arn}"
+            "Resource": "${aws_s3_bucket.code_bucket.arn}/*"
         },
         {
             "Effect": "Allow",
