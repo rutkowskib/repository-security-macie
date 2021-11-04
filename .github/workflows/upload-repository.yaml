@@ -17,13 +17,10 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: eu-west-1
-      - uses: aws-actions/configure-aws-credentials@v1
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+      - uses: gagoar/invoke-aws-lambda@master
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-1
-      - uses: isbang/sqs-action@v0.1.1
-        with:
-          sqs-url: ${{ secrets.SQS_URL }}
-          message: 'trigger'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          FunctionName: ${{ secrets.FUNCTION_NAME }}

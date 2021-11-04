@@ -30,10 +30,8 @@ resource "aws_iam_user_policy" "user_policy" {
         },
         {
             "Effect": "Allow",
-            "Action": [
-                "sqs:SendMessage"
-            ],
-            "Resource": "${aws_sqs_queue.trigger_queue.arn}"
+            "Action": "lambda:InvokeFunction",
+            "Resource": "${aws_lambda_function.trigger_macie.arn}"
         }
     ]
 }

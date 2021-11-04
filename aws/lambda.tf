@@ -51,11 +51,6 @@ resource "aws_iam_role_policy_attachment" "attach_macie" {
   policy_arn = aws_iam_policy.macie_policy.arn
 }
 
-resource "aws_iam_role_policy_attachment" "attach_sqs" {
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole"
-  role = aws_iam_role.lambda_role.name
-}
-
 resource "aws_lambda_function" "trigger_macie" {
   filename = local.output_path
   function_name = "trigger_macie"
@@ -72,11 +67,4 @@ resource "aws_lambda_function" "trigger_macie" {
   }
 
   depends_on = [ data.archive_file.lambda_zip ]
-}
-
-resource "aws_lambda_event_source_mapping" "sqs_trigger" {
-  event_source_arn = aws_sqs_queue.trigger_queue.arn
-  function_name    = aws_lambda_function.trigger_macie.arn
-
-  depends_on = [ aws_iam_role_policy_attachment.attach_sqs ]
 }

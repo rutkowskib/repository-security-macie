@@ -7,7 +7,8 @@ locals {
     AWS_S3_BUCKET = aws_s3_bucket.code_bucket.bucket
     AWS_ACCESS_KEY_ID = aws_iam_access_key.user_key.id
     AWS_SECRET_ACCESS_KEY = aws_iam_access_key.user_key.secret
-    SQS_URL = aws_sqs_queue.trigger_queue.id
+    AWS_REGION = var.aws_region
+    FUNCTION_NAME = aws_lambda_function.trigger_macie.function_name
   }
 }
 
